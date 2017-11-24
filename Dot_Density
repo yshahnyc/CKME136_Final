@@ -42,6 +42,7 @@ remove(BasePopulation, TotalPopulation, DAPopulation, DACanada)
 CityTest = select(Merge_CityPopulation, POP)
 CityTest$POP[is.na(CityTest$POP)] = 0
 CityTest.pts = dotsInPolys(DACity, as.integer(CityTest$POP), f="regular")
+projection(CityTest.pts) = CRS("+proj=longlat +datum=WGS84")
 
 #Base plot of DA Boundaries
 png("DACity_Boundaries.png", units = "in", width = 10, height = 8, res = 1000)
